@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio • Hồng Sơn</title>
+  <meta name="description" content="Trang portfolio cá nhân hiện đại bằng HTML + Tailwind" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"] },
+          colors: {
+            brand: {
+              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 25px rgba(0,0,0,0.06)'
+          }
+        }
+      },
+      darkMode: 'class'
+    };
+  </script>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Smooth section reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body class="font-sans bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white shadow-soft">💡</span>
+          <span>Phạm Hồng Sơn</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#about" class="hover:text-brand-600">Giới thiệu</a>
+          <a href="#skills" class="hover:text-brand-600">Kỹ năng</a>
+          <a href="#projects" class="hover:text-brand-600">Dự án</a>
+          <a href="#experience" class="hover:text-brand-600">Kinh nghiệm</a>
+          <a href="#contact" class="hover:text-brand-600">Liên hệ</a>
+          <button id="themeToggle" class="ml-2 inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
+            <i data-lucide="moon"></i><span>Chế độ tối</span>
+          </button>
+        </nav>
+
+        <!-- Mobile -->
+        <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm border-slate-200 dark:border-slate-800">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden py-3 border-t border-slate-200 dark:border-slate-800">
+        <nav class="flex flex-col gap-2 text-sm">
+          <a href="#about" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Giới thiệu</a>
+          <a href="#skills" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Kỹ năng</a>
+          <a href="#projects" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Dự án</a>
+          <a href="#experience" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Kinh nghiệm</a>
+          <a href="#contact" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Liên hệ</a>
+          <button id="themeToggleMb" class="mt-1 inline-flex items-center gap-2 rounded-xl border px-3 py-2 border-slate-200 dark:border-slate-800">
+            <i data-lucide="moon"></i><span>Chuyển chế độ</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs border-slate-200 dark:border-slate-800 mb-4">
+            <i data-lucide="sparkles"></i> Xin chào, mình là
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">Phạm Hồng Sơn —
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">Một lập trình viên, một nhà khoa học dữ liệu</span>
+          </h1>
+          <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-xl">Tóm tắt ngắn gọn về bản thân (1–2 câu): kinh nghiệm, đam mê, giá trị bạn mang lại.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#projects" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 text-white px-5 py-3 shadow-soft hover:bg-brand-700">
+              <i data-lucide="briefcase"></i> Xem dự án
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border px-5 py-3 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
+              <i data-lucide="send"></i> Liên hệ
+            </a>
+            <a href="#" class="inline-flex items-center gap-2 rounded-xl border px-5 py-3 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
+              <i data-lucide="download"></i> Tải CV (PDF)
+            </a>
+          </div>
+        </div>
+        <div class="reveal md:justify-self-end">
+          <div class="relative">
+            <div class="absolute -inset-4 -z-10 bg-gradient-to-tr from-brand-200 to-purple-200 dark:from-brand-700/30 dark:to-purple-700/30 rounded-3xl blur-2xl"></div>
+            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1600&auto=format&fit=crop" alt="Ảnh đại diện" class="w-full max-w-md rounded-3xl shadow-soft border border-slate-200 dark:border-slate-800" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-5 gap-10 items-start">
+        <div class="md:col-span-2 reveal">
+          <h2 class="text-2xl md:text-3xl font-bold">Về tôi</h2>
+          <p class="mt-4 text-slate-600 dark:text-slate-300">Viết đôi dòng về hành trình, mục tiêu nghề nghiệp và điều làm bạn khác biệt. Có thể nhắc tới thành tựu nổi bật hoặc công nghệ yêu thích.</p>
+          <div class="mt-6 flex flex-wrap gap-2 text-sm">
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#UI/UX</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#Frontend</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#Data</span>
+          </div>
+        </div>
+        <div class="md:col-span-3 grid gap-4 reveal">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="award" class="shrink-0"></i>
+              <div>
+                <h3 class="font-semibold">Thành tựu tiêu biểu</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Ví dụ: Top 5 Hackathon 2024, chứng chỉ Google UX, bài báo khoa học, v.v.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="target" class="shrink-0"></i>
+              <div>
+                <h3 class="font-semibold">Mục tiêu hiện tại</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Ví dụ: Tìm cơ hội thực tập Frontend, tham gia dự án open-source, nâng cao kỹ năng React/Android, v.v.</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="map" class="shrink-0"></i>
+              <div>
+                <h3 class="font-semibold">Sở thích</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Ví dụ: chụp ảnh, leo núi, đọc sách UI, nấu ăn…</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 reveal">Kỹ năng</h2>
+      <div class="grid md:grid-cols-3 gap-6 reveal">
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <h3 class="font-semibold mb-3">Ngôn ngữ & Công cụ</h3>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">HTML</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">CSS</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Tailwind</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">React</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Android</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <h3 class="font-semibold mb-3">Mạnh về</h3>
+          <ul class="space-y-2 text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
+            <li>Thiết kế giao diện hiện đại, thân thiện</li>
+            <li>Tối ưu hiệu năng & SEO cơ bản</li>
+            <li>Làm việc nhóm & Agile</li>
+          </ul>
+        </div>
+        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <h3 class="font-semibold mb-3">Ngôn ngữ</h3>
+          <div class="space-y-3 text-sm">
+            <div>
+              <div class="flex justify-between"><span>Tiếng Việt</span><span>Native</span></div>
+              <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full mt-1"><div class="h-2 bg-brand-600 rounded-full w-[100%]"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between"><span>English</span><span>B2</span></div>
+              <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full mt-1"><div class="h-2 bg-brand-600 rounded-full w-[70%]"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-end justify-between mb-8 reveal">
+        <h2 class="text-2xl md:text-3xl font-bold">Dự án</h2>
+        <a href="#" class="text-sm hover:text-brand-600">Xem tất cả</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 reveal">
+        <!-- Project card -->
+        <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <i data-lucide="image" class="opacity-60"></i>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:text-brand-600">Tên dự án A</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Mô tả ngắn: mục tiêu, vai trò, công nghệ sử dụng.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">React</span>
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Tailwind</span>
+            </div>
+            <div class="mt-4 flex gap-3 text-sm">
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="link"></i> Demo</a>
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="github"></i> Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <i data-lucide="image" class="opacity-60"></i>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:text-brand-600">Ứng dụng Android B</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">App nghe nhạc/đổi ngôn ngữ/chế độ ngang, …</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Kotlin/Java</span>
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Material</span>
+            </div>
+            <div class="mt-4 flex gap-3 text-sm">
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="link"></i> Demo</a>
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="github"></i> Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="aspect-video bg-slate-100 dark:bg-slate-900 grid place-items-center">
+            <i data-lucide="image" class="opacity-60"></i>
+          </div>
+          <div class="p-5">
+            <h3 class="font-semibold group-hover:text-brand-600">Phân tích dữ liệu C</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Dashboard/ML – mô tả ngắn kết quả chính.</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Python</span>
+              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Plotly</span>
+            </div>
+            <div class="mt-4 flex gap-3 text-sm">
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="link"></i> Demo</a>
+              <a href="#" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="github"></i> Source</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 reveal">Kinh nghiệm & Học vấn</h2>
+      <div class="grid md:grid-cols-2 gap-6 reveal">
+        <!-- Experience list -->
+        <div class="space-y-4">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="briefcase"></i>
+              <div>
+                <div class="font-semibold">[Công ty / Tổ chức] — [Vị trí]</div>
+                <div class="text-xs text-slate-500">[Từ] – [Đến]</div>
+                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li>Thành tựu/đầu việc 1</li>
+                  <li>Thành tựu/đầu việc 2</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="briefcase"></i>
+              <div>
+                <div class="font-semibold">[Công ty / Tổ chức] — [Vị trí]</div>
+                <div class="text-xs text-slate-500">[Từ] – [Đến]</div>
+                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li>Thành tựu/đầu việc 1</li>
+                  <li>Thành tựu/đầu việc 2</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Certs -->
+        <div class="space-y-4">
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="graduation-cap"></i>
+              <div>
+                <div class="font-semibold">[Trường / Chương trình] — [Ngành]</div>
+                <div class="text-xs text-slate-500">[Năm bắt đầu] – [Năm kết thúc]</div>
+                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Mô tả ngắn thành tích học tập, GPA, đề tài nghiên cứu…</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+            <div class="flex items-start gap-3">
+              <i data-lucide="certificate"></i>
+              <div>
+                <div class="font-semibold">Chứng chỉ</div>
+                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
+                  <li>[Tên chứng chỉ] — [Đơn vị cấp]</li>
+                  <li>[Tên chứng chỉ] — [Đơn vị cấp]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 reveal">
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold">Liên hệ</h2>
+          <p class="mt-3 text-slate-600 dark:text-slate-300">Mở cho cơ hội hợp tác, tuyển dụng hoặc trao đổi chuyên môn.</p>
+          <div class="mt-6 space-y-3 text-sm">
+            <div class="flex items-center gap-2"><i data-lucide="mail"></i> <a href="mailto:you@example.com" class="hover:text-brand-600">you@example.com</a></div>
+            <div class="flex items-center gap-2"><i data-lucide="map-pin"></i> [Thành phố, Quốc gia]</div>
+            <div class="flex items-center gap-2"><i data-lucide="github"></i> <a href="#" class="hover:text-brand-600">github.com/username</a></div>
+            <div class="flex items-center gap-2"><i data-lucide="linkedin"></i> <a href="#" class="hover:text-brand-600">linkedin.com/in/username</a></div>
+          </div>
+        </div>
+        <form class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 space-y-4" action="mailto:you@example.com" method="post" enctype="text/plain">
+          <div>
+            <label class="text-sm">Họ tên</label>
+            <input type="text" name="name" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+          </div>
+          <div>
+            <label class="text-sm">Email</label>
+            <input type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+          </div>
+          <div>
+            <label class="text-sm">Nội dung</label>
+            <textarea name="message" rows="4" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+          </div>
+          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 text-white px-5 py-3 shadow-soft hover:bg-brand-700">
+            <i data-lucide="send"></i> Gửi
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 text-sm flex flex-col md:flex-row items-center justify-between gap-3">
+      <p>© <span id="year"></span> [Tên bạn]. All rights reserved.</p>
+      <div class="flex items-center gap-3">
+        <a href="#about" class="hover:text-brand-600">Về tôi</a>
+        <a href="#projects" class="hover:text-brand-600">Dự án</a>
+        <a href="#contact" class="hover:text-brand-600">Liên hệ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Init icons
+    lucide.createIcons();
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme persistence
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    function toggleTheme() {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    }
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleMb').addEventListener('click', toggleTheme);
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

@@ -59,8 +59,10 @@
           <a href="#projects" class="hover:text-brand-600">Dự án</a>
           <a href="#experience" class="hover:text-brand-600">Kinh nghiệm</a>
           <a href="#contact" class="hover:text-brand-600">Liên hệ</a>
-          <button id="themeToggle" class="ml-2 inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
-            <i data-lucide="moon"></i><span>Chế độ tối</span>
+          <button id="theme-toggle" class="relative w-14 h-7 bg-slate-300 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300">
+              <span id="theme-icon" class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300">
+                  ☀️
+              </span>
           </button>
         </nav>
 
@@ -393,17 +395,30 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Theme persistence
-    const root = document.documentElement;
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      root.classList.add('dark');
-    }
-    function toggleTheme() {
-      root.classList.toggle('dark');
-      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
-    }
-    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-    document.getElementById('themeToggleMb').addEventListener('click', toggleTheme);
+    const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Giữ chế độ đã lưu
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            themeIcon.style.transform = 'translateX(28px)';
+            themeIcon.textContent = '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+
+            if (isDark) {
+                themeIcon.style.transform = 'translateX(28px)';
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.style.transform = 'translateX(0px)';
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');

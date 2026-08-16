@@ -1,438 +1,240 @@
 <!DOCTYPE html>
-<html lang="vi" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phạm Hồng Sơn — AI Engineer & Backend Developer</title>
-  <meta name="description" content="Portfolio cá nhân của Phạm Hồng Sơn — AI Engineer, Backend Developer, sinh viên CNTT tại Đại học Kinh tế Quốc dân" />
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    // Tailwind config
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"] },
-          colors: {
-            brand: {
-              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81'
-            }
-          },
-          boxShadow: {
-            soft: '0 10px 25px rgba(0,0,0,0.06)'
-          }
-        }
-      },
-      darkMode: 'class'
-    };
-  </script>
-
-  <!-- Inter font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    /* Smooth section reveal */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.show { opacity: 1; transform: none; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phạm Hồng Sơn — AI Engineer & Backend Developer</title>
+<meta name="description" content="Portfolio of Phạm Hồng Sơn — AI Engineer, Backend Developer, IT student at the National Economics University">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0a192f; color: #8892b0; font-family: 'Inter', system-ui, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #64ffda33; color: #ccd6f6; }
+  .mono { font-family: 'Roboto Mono', monospace; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.show { opacity: 1; transform: none; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .side-nav { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); display: none; flex-direction: column; gap: 20px; z-index: 40; align-items: flex-end; }
+  @media (min-width: 1180px) { .side-nav { display: flex; } }
+  .side-nav a { display: flex; align-items: center; gap: 10px; color: #8892b0; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+  .side-nav a:hover { color: #64ffda; }
+  .dot-label { opacity: .4; transition: opacity .3s ease; }
+  .dot-mark { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #64ffda; background: transparent; transition: all .3s ease; display: block; }
+  .btn-outline { font-family: 'Roboto Mono', monospace; font-size: 15px; border: 1px solid #64ffda; color: #64ffda; padding: 14px 26px; border-radius: 4px; transition: background .2s ease; display: inline-block; }
+  .btn-outline:hover { background: #64ffda1a; }
+  .section-title { display: flex; align-items: center; gap: 18px; font-size: 26px; font-weight: 700; color: #ccd6f6; margin: 0 0 44px; white-space: nowrap; }
+  .section-title .num { font-family: 'Roboto Mono', monospace; color: #64ffda; font-size: 18px; }
+  .section-title .rule { height: 1px; background: #233554; flex: 1; margin-left: 10px; }
+  .skill-card { background: #112240; border-radius: 6px; padding: 26px; border: 1px solid #1d2d50; }
+  .skill-card h3 { font-size: 17px; font-weight: 600; color: #ccd6f6; margin: 0 0 16px; }
+  .skill-card ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .skill-card li { font-size: 15px; color: #8892b0; display: flex; gap: 10px; }
+  .skill-card li::before { content: '▹'; color: #64ffda; }
+  .work-card { background: #112240; border-radius: 8px; padding: 32px; border: 1px solid #1d2d50; transition: transform .25s ease, border-color .25s ease; display: flex; flex-direction: column; }
+  .work-card:hover { transform: translateY(-6px); border-color: #64ffda; }
+  .tab-btn { text-align: left; font-family: 'Roboto Mono', monospace; font-size: 14px; padding: 16px 18px; background: transparent; border: none; border-left: 2px solid transparent; color: #8892b0; cursor: pointer; transition: all .2s ease; width: 100%; }
+  .tab-btn:hover { background: #64ffda0d; color: #64ffda; }
+  .tab-btn.active { background: #64ffda1a; border-left-color: #64ffda; color: #64ffda; }
+  .exp-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .exp-list li { font-size: 15px; line-height: 1.7; color: #8892b0; padding-left: 24px; position: relative; }
+  .exp-list li::before { content: '▹'; position: absolute; left: 0; color: #64ffda; }
+</style>
 </head>
-<body class="font-sans bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/60 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-2 font-semibold tracking-tight">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white shadow-soft">💡</span>
-          <span>Phạm Hồng Sơn</span>
-        </a>
+<body>
 
-        <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="#about" class="hover:text-brand-600">Giới thiệu</a>
-          <a href="#skills" class="hover:text-brand-600">Kỹ năng</a>
-          <a href="#projects" class="hover:text-brand-600">Dự án</a>
-          <a href="#experience" class="hover:text-brand-600">Kinh nghiệm</a>
-          <a href="#contact" class="hover:text-brand-600">Liên hệ</a>
-          <button id="theme-toggle" class="relative w-14 h-7 bg-slate-300 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300">
-              <span id="theme-icon" class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300">
-                  ☀️
-              </span>
-          </button>
-        </nav>
+<nav class="side-nav" id="sideNav">
+  <a href="#intro"><span class="dot-label" data-label="intro">intro</span><span class="dot-mark" data-mark="intro"></span></a>
+  <a href="#about"><span class="dot-label" data-label="about">about</span><span class="dot-mark" data-mark="about"></span></a>
+  <a href="#skills"><span class="dot-label" data-label="skills">skills</span><span class="dot-mark" data-mark="skills"></span></a>
+  <a href="#work"><span class="dot-label" data-label="work">work</span><span class="dot-mark" data-mark="work"></span></a>
+  <a href="#experience"><span class="dot-label" data-label="experience">experience</span><span class="dot-mark" data-mark="experience"></span></a>
+</nav>
 
-        <!-- Mobile -->
-        <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm border-slate-200 dark:border-slate-800">
-          <i data-lucide="menu"></i>
-        </button>
+<header style="position: sticky; top: 0; z-index: 30; backdrop-filter: blur(8px); background: rgba(10,25,47,0.85);">
+  <div class="wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 22px 24px;">
+    <a href="#intro" class="mono" style="font-weight: 500; font-size: 18px; color: #ccd6f6;">Phạm Hồng Sơn</a>
+    <div class="mono" style="display: flex; gap: 26px; font-size: 14px;">
+      <a href="mailto:sonph2013@gmail.com" style="color:#8892b0" onmouseover="this.style.color='#64ffda'" onmouseout="this.style.color='#8892b0'">email</a>
+      <a href="https://github.com/son110904" target="_blank" style="color:#8892b0" onmouseover="this.style.color='#64ffda'" onmouseout="this.style.color='#8892b0'">github</a>
+      <a href="https://www.linkedin.com/in/sonhongpham1109/" target="_blank" style="color:#8892b0" onmouseover="this.style.color='#64ffda'" onmouseout="this.style.color='#8892b0'">linkedin</a>
+    </div>
+  </div>
+</header>
+
+<section id="intro" class="wrap" style="padding-top: 100px; padding-bottom: 130px; scroll-margin-top: 90px;">
+  <div class="reveal">
+    <p class="mono" style="font-size: 15px; color: #64ffda; margin: 0 0 20px;">Hi, my name is</p>
+    <h1 style="font-weight: 800; font-size: clamp(38px, 7vw, 72px); line-height: 1.1; letter-spacing: -0.02em; margin: 0; color: #ccd6f6;">Phạm Hồng Sơn.</h1>
+    <h2 style="font-weight: 700; font-size: clamp(28px, 5.5vw, 54px); line-height: 1.15; letter-spacing: -0.02em; margin: 6px 0 0; color: #8892b0;">I build AI systems that answer real questions.</h2>
+    <p style="font-size: 18px; line-height: 1.7; color: #8892b0; max-width: 560px; margin: 30px 0 0; text-wrap: pretty;">Final-year IT student at the National Economics University in Hanoi, working on retrieval systems, backend services, and the messy data underneath them.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 44px;">
+      <a href="#work" class="btn-outline">See my work</a>
+      <a href="./Pham_Hong_Son_CV.pdf" download class="mono" style="font-size: 15px; color: #8892b0; padding: 14px 4px;" onmouseover="this.style.color='#64ffda'" onmouseout="this.style.color='#8892b0'">Download CV</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="wrap" style="padding-bottom: 130px; scroll-margin-top: 90px;">
+  <div class="reveal">
+    <h2 class="section-title"><span class="num">01.</span>About Me<span class="rule"></span></h2>
+    <div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 56px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        <p style="font-size: 17px; line-height: 1.75; color: #8892b0; margin: 0; text-wrap: pretty;">I started out doing data analysis — cleaning transaction tables at a bank, hunting for patterns in customer behaviour. Somewhere along the way I got more interested in the systems that make answers reachable than in the answers themselves, and moved toward AI engineering.</p>
+        <p style="font-size: 17px; line-height: 1.75; color: #8892b0; margin: 0; text-wrap: pretty;">These days I spend most of my time on graph-based retrieval, FastAPI services and Docker deployments, and I'm finishing a thesis on an NLP career-advising system. Outside of that: research papers, astrocartography, and reading other people's code.</p>
+        <p style="font-size: 17px; line-height: 1.75; color: #8892b0; margin: 0; text-wrap: pretty;">Graduating in 2026 and looking for a first full-time role in AI or data engineering.</p>
       </div>
-
-      <!-- Mobile menu -->
-      <div id="mobileMenu" class="md:hidden hidden py-3 border-t border-slate-200 dark:border-slate-800">
-        <nav class="flex flex-col gap-2 text-sm">
-          <a href="#about" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Giới thiệu</a>
-          <a href="#skills" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Kỹ năng</a>
-          <a href="#projects" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Dự án</a>
-          <a href="#experience" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Kinh nghiệm</a>
-          <a href="#contact" class="px-2 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900">Liên hệ</a>
-          <button id="themeToggleMb" class="mt-1 inline-flex items-center gap-2 rounded-xl border px-3 py-2 border-slate-200 dark:border-slate-800">
-            <i data-lucide="moon"></i><span>Chuyển chế độ</span>
-          </button>
-        </nav>
+      <div style="position: relative; width: 100%; max-width: 260px;">
+        <div style="position: absolute; inset: 14px -14px -14px 14px; border: 2px solid #64ffda; border-radius: 4px; z-index: 0;"></div>
+        <img src="assets/son.jpg" alt="Phạm Hồng Sơn" style="position: relative; z-index: 1; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; display: block; filter: grayscale(20%) contrast(1.05);">
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950"></div>
-    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div class="reveal">
-          <div class="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs border-slate-200 dark:border-slate-800 mb-4">
-            <i data-lucide="sparkles"></i> Xin chào, mình là
-          </div>
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">Phạm Hồng Sơn —
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">AI Engineer & Backend Developer</span>
-          </h1>
-          <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-xl">Sinh viên ngành Công nghệ thông tin tại Đại học Kinh tế Quốc dân, có kinh nghiệm thực tế trong phân tích dữ liệu, xây dựng hệ thống AI/RAG và phát triển backend. Quan tâm đến Data Analytics, Ecommerce Intelligence và ứng dụng AI trong ra quyết định.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#projects" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 text-white px-5 py-3 shadow-soft hover:bg-brand-700">
-              <i data-lucide="briefcase"></i> Xem dự án
-            </a>
-            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border px-5 py-3 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
-              <i data-lucide="send"></i> Liên hệ
-            </a>
-            <a href="./Pham_Hong_Son_CV.pdf" download class="inline-flex items-center gap-2 rounded-xl border px-5 py-3 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900">
-              <i data-lucide="download"></i> Tải CV (PDF)
-            </a>
-          </div>
-        </div>
-        <div class="reveal md:justify-self-end">
-          <div class="relative">
-            <div class="absolute -inset-4 -z-10 bg-gradient-to-tr from-brand-200 to-purple-200 dark:from-brand-700/30 dark:to-purple-700/30 rounded-3xl blur-2xl"></div>
-            <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1600&auto=format&fit=crop" alt="Ảnh đại diện" class="w-full max-w-md rounded-3xl shadow-soft border border-slate-200 dark:border-slate-800" />
-          </div>
-        </div>
+<section id="skills" class="wrap" style="padding-bottom: 130px; scroll-margin-top: 90px;">
+  <div class="reveal">
+    <h2 class="section-title"><span class="num">02.</span>Skills<span class="rule"></span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <ul><li>Python, SQL, R</li><li>C++, C, Java</li><li>JavaScript, HTML/CSS</li></ul>
+      </div>
+      <div class="skill-card">
+        <h3>Tools</h3>
+        <ul><li>FastAPI, Neo4j (GraphRAG)</li><li>SBERT, Docker, Portainer</li><li>Git, EDA, clustering</li></ul>
+      </div>
+      <div class="skill-card">
+        <h3>Certificates</h3>
+        <ul><li>IBM Machine Learning</li><li>IBM Data Science</li><li>IELTS 6.5</li></ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About -->
-  <section id="about" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-5 gap-10 items-start">
-        <div class="md:col-span-2 reveal">
-          <h2 class="text-2xl md:text-3xl font-bold">Về tôi</h2>
-          <p class="mt-4 text-slate-600 dark:text-slate-300">AI/Data Engineer có kinh nghiệm thực tế về phân tích dữ liệu, Python, SQL và xây dựng các ứng dụng hướng dữ liệu. Từng xử lý và phân tích bộ dữ liệu lớn, phân khúc khách hàng, và triển khai các dịch vụ AI thực tế trong môi trường doanh nghiệp và học thuật.</p>
-          <div class="mt-6 flex flex-wrap gap-2 text-sm">
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#AI Engineering</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#Backend</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">#Data Analytics</span>
-          </div>
+<section id="work" class="wrap" style="padding-bottom: 130px; scroll-margin-top: 90px;">
+  <div class="reveal">
+    <h2 class="section-title"><span class="num">03.</span>Work<span class="rule"></span></h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+      <article class="work-card">
+        <div class="mono" style="font-size: 13px; color: #64ffda; margin-bottom: 18px;">01</div>
+        <h3 style="font-size: 21px; font-weight: 700; color: #ccd6f6; margin: 0; line-height: 1.35; text-wrap: pretty;">GraphRAG question-answering system for career advising</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: #8892b0; margin: 16px 0 0; flex: 1; text-wrap: pretty;">Built and deployed a GraphRAG-based Q&amp;A system that advises NEU students on study paths and careers, wired directly into the university's admissions platform. Containerised with Docker and managed through Portainer.</p>
+        <div class="mono" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; font-size: 13px; color: #8892b0;">
+          <span>Python</span><span>FastAPI</span><span>Neo4j</span><span>Docker</span>
         </div>
-        <div class="md:col-span-3 grid gap-4 reveal">
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="award" class="shrink-0"></i>
-              <div>
-                <h3 class="font-semibold">Thành tựu tiêu biểu</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">Best Mentor Awardee tại NEU, Giải thưởng cho Bài nghiên cứu mở rộng (Recognition for Extended Research Paper), GPA 3.6 ngành CNTT, IELTS 6.5.</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="target" class="shrink-0"></i>
-              <div>
-                <h3 class="font-semibold">Mục tiêu hiện tại</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">Hoàn thiện khóa luận tốt nghiệp về hệ thống tư vấn nghề nghiệp dựa trên NLP, đồng thời tìm kiếm cơ hội việc làm chính thức trong lĩnh vực AI Engineering / Data Engineering sau khi tốt nghiệp.</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="map" class="shrink-0"></i>
-              <div>
-                <h3 class="font-semibold">Sở thích</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-300">Tìm hiểu công nghệ AI mới, khám phá astrocartography (bản đồ sao cá nhân), đọc tài liệu nghiên cứu và rèn luyện kỹ năng lập trình hệ thống.</p>
-              </div>
-            </div>
-          </div>
+        <a href="https://ai.neu.edu.vn/tuyen-sinh/tools/mbti-career-neu" target="_blank" class="mono" style="display: inline-block; margin-top: 22px; font-size: 14px; color: #64ffda;">Live demo →</a>
+      </article>
+      <article class="work-card">
+        <div class="mono" style="font-size: 13px; color: #64ffda; margin-bottom: 18px;">02</div>
+        <h3 style="font-size: 21px; font-weight: 700; color: #ccd6f6; margin: 0; line-height: 1.35; text-wrap: pretty;">NLP career-advising system — my thesis</h3>
+        <p style="font-size: 15px; line-height: 1.7; color: #8892b0; margin: 16px 0 0; flex: 1; text-wrap: pretty;">A CV-centred pipeline: extract skills, measure the gap against a target role, score career readiness and propose a personalised learning path. Uses SBERT and RAG with an LLM, mapped against the ESCO and O*NET skill taxonomies.</p>
+        <div class="mono" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 20px; font-size: 13px; color: #8892b0;">
+          <span>Python</span><span>SBERT</span><span>RAG</span><span>React</span>
         </div>
-      </div>
+        <p class="mono" style="margin: 22px 0 0; font-size: 13px; color: #64ffda; font-style: italic;">In progress</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8 reveal">Kỹ năng</h2>
-      <div class="grid md:grid-cols-3 gap-6 reveal">
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-3">Ngôn ngữ lập trình</h3>
-          <div class="flex flex-wrap gap-2 text-sm">
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Python</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">SQL</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">R</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">C++</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">C</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Java</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">HTML/CSS</span>
-            <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800">JavaScript</span>
-          </div>
-        </div>
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-3">Công cụ & Công nghệ</h3>
-          <ul class="space-y-2 text-sm list-disc list-inside text-slate-600 dark:text-slate-300">
-            <li>FastAPI, Neo4j (GraphRAG)</li>
-            <li>Docker & Portainer (triển khai dịch vụ)</li>
-            <li>Git, phân tích dữ liệu (EDA, clustering)</li>
+<section id="experience" class="wrap" style="padding-bottom: 130px; scroll-margin-top: 90px;">
+  <div class="reveal">
+    <h2 class="section-title"><span class="num">04.</span>Experience<span class="rule"></span></h2>
+    <div style="background: #112240; border: 1px solid #1d2d50; border-radius: 8px; display: grid; grid-template-columns: 200px minmax(0, 1fr); overflow: hidden;">
+      <div role="tablist" style="display: flex; flex-direction: column; border-right: 1px solid #1d2d50;">
+        <button class="tab-btn active" data-tab="0" onclick="selectTab(0)">Edtech Lab</button>
+        <button class="tab-btn" data-tab="1" onclick="selectTab(1)">Vietinbank</button>
+        <button class="tab-btn" data-tab="2" onclick="selectTab(2)">Education</button>
+      </div>
+      <div style="padding: 32px; min-height: 300px;">
+        <div class="tab-panel" data-panel="0">
+          <h3 style="font-size: 20px; font-weight: 700; color: #ccd6f6; margin: 0;">AI Engineer Intern <span style="color: #64ffda; font-weight: 500;">@ Edtech Lab, NEU</span></h3>
+          <p class="mono" style="font-size: 13px; color: #8892b0; margin: 10px 0 22px;">Sep 2025 – Apr 2026</p>
+          <ul class="exp-list">
+            <li>Built and shipped a GraphRAG question-answering system in Python, FastAPI and Neo4j for academic and career advising.</li>
+            <li>Developed the backend APIs and retrieval flow behind real-time AI chat, integrated into the university platform.</li>
+            <li>Containerised backend services with Docker and managed deployments through Portainer.</li>
           </ul>
-          <div class="mt-3 flex flex-wrap gap-2 text-xs">
-            <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Chứng chỉ: IBM Machine Learning</span>
-            <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Chứng chỉ: IBM Data Science</span>
-          </div>
         </div>
-        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <h3 class="font-semibold mb-3">Ngôn ngữ</h3>
-          <div class="space-y-3 text-sm">
-            <div>
-              <div class="flex justify-between"><span>Tiếng Việt</span><span>Bản ngữ</span></div>
-              <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full mt-1"><div class="h-2 bg-brand-600 rounded-full w-[100%]"></div></div>
-            </div>
-            <div>
-              <div class="flex justify-between"><span>English</span><span>IELTS 6.5</span></div>
-              <div class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full mt-1"><div class="h-2 bg-brand-600 rounded-full w-[70%]"></div></div>
-            </div>
-          </div>
+        <div class="tab-panel" data-panel="1" style="display: none;">
+          <h3 style="font-size: 20px; font-weight: 700; color: #ccd6f6; margin: 0;">Data Analyst Intern <span style="color: #64ffda; font-weight: 500;">@ Vietinbank</span></h3>
+          <p class="mono" style="font-size: 13px; color: #8892b0; margin: 10px 0 22px;">Jun 2025 – Oct 2025</p>
+          <ul class="exp-list">
+            <li>Processed and analysed over 100,000 customer transactions in Python and SQL to surface behaviour patterns for marketing segmentation.</li>
+            <li>Ran exploratory data analysis and clustering-based customer segmentation to support marketing strategy.</li>
+          </ul>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="flex items-end justify-between mb-8 reveal">
-        <h2 class="text-2xl md:text-3xl font-bold">Dự án</h2>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6 reveal">
-        <!-- Project card -->
-        <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <div class="aspect-video bg-slate-100 dark:bg-slate-900 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1762279388956-c1fc34cb1c08?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Minh họa hệ thống GraphRAG" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-5">
-            <h3 class="font-semibold group-hover:text-brand-600">Hệ thống hỏi-đáp tư vấn nghề nghiệp dựa trên GraphRAG</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Xây dựng và triển khai hệ thống hỏi-đáp dựa trên GraphRAG, hỗ trợ tư vấn học thuật và nghề nghiệp cho sinh viên, tích hợp trực tiếp vào nền tảng tuyển sinh của trường Đại học Kinh tế Quốc dân. Đóng gói Docker và quản lý triển khai qua Portainer.</p>
-            <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Python</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">FastAPI</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Neo4j</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Docker</span>
-            </div>
-            <div class="mt-4 flex gap-3 text-sm">
-              <a href="https://ai.neu.edu.vn/tuyen-sinh/tools/mbti-career-neu" target="_blank" class="inline-flex items-center gap-1 hover:text-brand-600"><i data-lucide="link"></i> Demo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="group rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-          <div class="aspect-video bg-slate-100 dark:bg-slate-900 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1762279389083-abf71f22d338?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Minh họa hệ thống tư vấn nghề nghiệp NLP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-5">
-            <h3 class="font-semibold group-hover:text-brand-600">Hệ thống tư vấn nghề nghiệp dựa trên NLP (Khóa luận tốt nghiệp)</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Xây dựng quy trình lấy CV ứng viên làm trung tâm: trích xuất kỹ năng, phân tích khoảng trống kỹ năng (skill gap), tính điểm sẵn sàng nghề nghiệp và đề xuất lộ trình học tập cá nhân hóa. Sử dụng SBERT, RAG kết hợp LLM, ánh xạ theo từ điển kỹ năng ESCO/O*NET.</p>
-            <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">Python</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">SBERT</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">RAG</span>
-              <span class="px-2 py-1 rounded-md bg-slate-100 dark:bg-slate-800">React.js</span>
-            </div>
-            <div class="mt-4 flex gap-3 text-sm">
-              <span class="text-xs text-slate-500">Đang trong quá trình hoàn thiện</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience -->
-  <section id="experience" class="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/40">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8 reveal">Kinh nghiệm & Học vấn</h2>
-      <div class="grid md:grid-cols-2 gap-6 reveal">
-        <!-- Experience list -->
-        <div class="space-y-4">
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="briefcase"></i>
-              <div>
-                <div class="font-semibold">Edtech Lab (NEU) — AI Engineer Intern</div>
-                <div class="text-xs text-slate-500">9/2025 – 4/2026</div>
-                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
-                  <li>Xây dựng và triển khai hệ thống hỏi-đáp dựa trên GraphRAG (Python, FastAPI, Neo4j) hỗ trợ tư vấn học thuật và nghề nghiệp</li>
-                  <li>Phát triển backend API và quy trình truy xuất cho tương tác AI chat thời gian thực, tích hợp vào nền tảng của trường</li>
-                  <li>Đóng gói dịch vụ backend bằng Docker, quản lý triển khai qua Portainer</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="briefcase"></i>
-              <div>
-                <div class="font-semibold">Vietinbank — Data Analyst Intern</div>
-                <div class="text-xs text-slate-500">6/2025 – 10/2025</div>
-                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
-                  <li>Xử lý và phân tích hơn 100.000 giao dịch khách hàng bằng Python và SQL để xác định hành vi, hỗ trợ chiến lược phân khúc marketing</li>
-                  <li>Thực hiện EDA và phân khúc khách hàng bằng các thuật toán clustering phục vụ phân tích marketing</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education & Certs -->
-        <div class="space-y-4">
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="graduation-cap"></i>
-              <div>
-                <div class="font-semibold">Đại học Kinh tế Quốc dân — Công nghệ thông tin</div>
-                <div class="text-xs text-slate-500">2023 – 2026</div>
-                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GPA: 3.6. Best Mentor Awardee. Recognition for Extended Research Paper.</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="graduation-cap"></i>
-              <div>
-                <div class="font-semibold">THPT Trần Phú - Hoàn Kiếm</div>
-                <div class="text-xs text-slate-500">2019 – 2022</div>
-                <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">GPA: 9.0</p>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
-            <div class="flex items-start gap-3">
-              <i data-lucide="award"></i>
-              <div>
-                <div class="font-semibold">Chứng chỉ</div>
-                <ul class="mt-2 text-sm text-slate-600 dark:text-slate-300 list-disc list-inside">
-                  <li>IBM Machine Learning</li>
-                  <li>IBM Data Science</li>
-                  <li>IELTS 6.5</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="tab-panel" data-panel="2" style="display: none;">
+          <h3 style="font-size: 20px; font-weight: 700; color: #ccd6f6; margin: 0;">Information Technology <span style="color: #64ffda; font-weight: 500;">@ National Economics University</span></h3>
+          <p class="mono" style="font-size: 13px; color: #8892b0; margin: 10px 0 22px;">2023 – 2026</p>
+          <ul class="exp-list">
+            <li>GPA 3.6. Best Mentor Awardee and recognition for an extended research paper.</li>
+            <li>Tran Phu – Hoan Kiem High School, 2019–2022. GPA 9.0.</li>
+            <li>Certificates: IBM Machine Learning, IBM Data Science, IELTS 6.5.</li>
+          </ul>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4 reveal">
-      <div class="grid md:grid-cols-2 gap-8 items-start">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold">Liên hệ</h2>
-          <p class="mt-3 text-slate-600 dark:text-slate-300">Mở cho cơ hội hợp tác, tuyển dụng hoặc trao đổi chuyên môn.</p>
-          <div class="mt-6 space-y-3 text-sm">
-            <div class="flex items-center gap-2"><i data-lucide="mail"></i> <a href="mailto:sonph2013@gmail.com" class="hover:text-brand-600">sonph2013@gmail.com</a></div>
-            <div class="flex items-center gap-2"><i data-lucide="phone"></i> <a href="tel:+84833110904" class="hover:text-brand-600">+84 833 110 904</a></div>
-            <div class="flex items-center gap-2"><i data-lucide="map-pin"></i> Hà Nội, Việt Nam</div>
-            <div class="flex items-center gap-2"><i data-lucide="github"></i> <a href="https://github.com/son110904" target="_blank" class="hover:text-brand-600">github.com/son110904</a></div>
-            <div class="flex items-center gap-2"><i data-lucide="linkedin"></i> <a href="https://www.linkedin.com/in/sonhongpham1109/" target="_blank" class="hover:text-brand-600">linkedin.com/in/sonhongpham1109</a></div>
-          </div>
-        </div>
-        <form class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 space-y-4" action="mailto:sonph2013@gmail.com" method="post" enctype="text/plain">
-          <div>
-            <label class="text-sm">Họ tên</label>
-            <input type="text" name="name" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
-          </div>
-          <div>
-            <label class="text-sm">Email</label>
-            <input type="email" name="email" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
-          </div>
-          <div>
-            <label class="text-sm">Nội dung</label>
-            <textarea name="message" rows="4" required class="mt-1 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
-          </div>
-          <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 text-white px-5 py-3 shadow-soft hover:bg-brand-700">
-            <i data-lucide="send"></i> Gửi
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
+<footer class="wrap reveal" style="max-width: 700px; padding-bottom: 100px; text-align: center;">
+  <p class="mono" style="font-size: 15px; color: #64ffda; margin: 0 0 16px;">05. What's Next?</p>
+  <h2 style="font-weight: 800; font-size: clamp(30px, 5vw, 46px); color: #ccd6f6; margin: 0; letter-spacing: -0.02em;">Say Hello</h2>
+  <p style="font-size: 17px; line-height: 1.7; color: #8892b0; max-width: 480px; margin: 20px auto 0;">Open to full-time roles, collaborations, or a conversation about retrieval systems.</p>
+  <a href="mailto:sonph2013@gmail.com" class="btn-outline" style="margin-top: 40px;">sonph2013@gmail.com</a>
+  <div class="mono" style="display: flex; justify-content: center; gap: 26px; margin-top: 30px; font-size: 14px; color: #8892b0;">
+    <span>+84 833 110 904</span><span>Hanoi, Vietnam</span>
+  </div>
+  <p class="mono" style="margin: 90px 0 0; font-size: 12px; color: #495670;">© <span id="year"></span> Phạm Hồng Sơn</p>
+</footer>
 
-  <!-- Footer -->
-  <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 text-sm flex flex-col md:flex-row items-center justify-between gap-3">
-      <p>© <span id="year"></span> Phạm Hồng Sơn. All rights reserved.</p>
-      <div class="flex items-center gap-3">
-        <a href="#about" class="hover:text-brand-600">Về tôi</a>
-        <a href="#projects" class="hover:text-brand-600">Dự án</a>
-        <a href="#contact" class="hover:text-brand-600">Liên hệ</a>
-      </div>
-    </div>
-  </footer>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script>
-    // Init icons
-    lucide.createIcons();
+  function selectTab(n) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === n));
+    document.querySelectorAll('.tab-panel').forEach((p) => {
+      p.style.display = Number(p.getAttribute('data-panel')) === n ? 'block' : 'none';
+    });
+  }
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  reveals.forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('show');
+    else io.observe(el);
+  });
 
-    // Theme persistence
-    const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-
-        // Giữ chế độ đã lưu
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-            themeIcon.style.transform = 'translateX(28px)';
-            themeIcon.textContent = '🌙';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-
-            if (isDark) {
-                themeIcon.style.transform = 'translateX(28px)';
-                themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeIcon.style.transform = 'translateX(0px)';
-                themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => obs.observe(el));
-  </script>
+  const ids = ['intro', 'about', 'skills', 'work', 'experience'];
+  function updateSpy() {
+    const line = window.innerHeight * 0.35;
+    let active = ids[0];
+    ids.forEach((k) => {
+      const el = document.getElementById(k);
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.top <= line) active = k;
+    });
+    ids.forEach((k) => {
+      const mark = document.querySelector(`[data-mark="${k}"]`);
+      const label = document.querySelector(`[data-label="${k}"]`);
+      if (!mark || !label) return;
+      const on = k === active;
+      mark.style.background = on ? '#64ffda' : 'transparent';
+      mark.style.transform = on ? 'scale(1.4)' : 'scale(1)';
+      label.style.opacity = on ? '1' : '0.4';
+    });
+  }
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  window.addEventListener('resize', updateSpy);
+  updateSpy();
+</script>
 </body>
 </html>
